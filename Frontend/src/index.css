@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./assets/fonts/v0.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.triangle {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.downTriangle {
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+
+.upTriangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.triangleContent {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.triangle:hover .triangleContent {
+  transform: scale(1.1);
+}
+
+.underline {
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+}
+
+.module {
+  @apply h-[145vh] w-full flex  ;
+}
+
+.title {
+  @apply text-2xl font-bold mt-3;
+}
+
+.subTitle {
+  @apply text-gray-600 mt-2 text-xs;
+}
+
+.input {
+  @apply w-full bg-black text-white px-4 py-2 rounded-lg border border-zinc-500 focus:ring-1 focus:ring-white focus:outline-none placeholder-zinc-600;
+}
+
+.hoverIt {
+  @apply flex items-center py-1 px-10 gap-3 rounded-md bg-zinc-950 text-zinc-50 hover:bg-zinc-900 hover:text-zinc-50 border border-zinc-500;
+}
+
+.button {
+  @apply px-4 py-3 flex justify-center items-center font-semibold rounded-xl text-zinc-950 bg-zinc-50 hover:bg-zinc-100;
+}
+
+.newsCategory {
+  @apply relative cursor-pointer text-white;
+}
+
+.background {
+  @apply bg-dark;
+}
+
+.gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-blue-700;
+}
+
+.rank {
+  @apply px-4 py-2 bg-zinc-950 rounded-full text-white mt-2 ;
+}
+
+.moduleRank {
+  @apply w-1/4 text-[200px] tracking-tighter font-light sticky top-0 h-96 ml-20 ;
+}
+
+.upTriangle {
+  @apply w-0 h-0 border-l-[150px] border-l-transparent border-r-[150px] border-r-transparent border-b-[300px] border-b-zinc-900 -ml-32 hover:z-30 transition-transform duration-500 hover:rotate-90 hover:border-violet-600 ;
+}
+
+.upTriContent {
+  @apply flex justify-center items-center mt-32 ;
+}
+
+.downTriangle {
+  @apply w-72 h-72 border-l-[150px] border-l-transparent border-r-[150px] border-r-transparent border-t-[300px] border-t-zinc-900 -ml-32 hover:z-30 transition-transform duration-500 hover:rotate-90 hover:border-violet-600;
+}
+
+
+.downTriContent {
+  @apply flex justify-center items-center -mt-44 ;
+}
