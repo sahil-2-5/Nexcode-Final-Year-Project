@@ -1,6 +1,267 @@
 # Final Year Project
 
-<h2>Nexcode - Web Application For Developers</h2>
+<!-- README: NexCode – Centralized Developer Platform -->
+
+<h1 align="center">NexCode – Centralized Developer Platform</h1>
+
+<p align="center">
+  A MERN-based platform that brings AI-assisted coding, Q&A, code snippets, task management, developer news, and an AI tools hub into one place.
+  <br/>
+  <strong>AI integration powered by Google Gemini API</strong>
+</p>
+
+<hr/>
+
+<h2>🚀 Overview</h2>
+<p>
+  <strong>NexCode</strong> is a centralized web application designed for developers who often switch between multiple platforms for coding help, task management, and news updates.
+  It consolidates these workflows into a single, cohesive experience with secure authentication and scalable architecture.
+</p>
+
+<h2>✨ Key Features</h2>
+<ul>
+  <li><strong>AI Prompt</strong> – AI-powered coding assistance using <strong>Gemini API Key</strong> (prompt-based solutions, code suggestions, explanations).</li>
+  <li><strong>AI Hub</strong> – Curated directory of AI tools available on one page (search, filter, categories).</li>
+  <li><strong>CodeSnippet</strong> – Store, organize, tag, and search personal code snippets.</li>
+  <li><strong>Task Manager</strong> – CRUD tasks, priorities, due dates, tags, filters, and search for daily productivity.</li>
+  <li><strong>Social Media (NexGram)</strong> – Post developer-centric <em>images</em> or <em>text</em>, like & comment.</li>
+  <li><strong>3D Touch</strong> – Interactive <strong>React Three Fiber</strong> object on auth/hero screens for a modern UX.</li>
+</ul>
+
+<h3>🛠 Admin Module</h3>
+<ul>
+  <li>Add / edit / delete AI tool listings for the <strong>AI Hub</strong> (name, category, description, official link, tags, logo/banner via Cloudinary).</li>
+  <li>Basic moderation for reported posts (optional).</li>
+</ul>
+
+<hr/>
+
+<h2>🧩 Tech Stack</h2>
+
+<h3>Frontend</h3>
+<ul>
+  <li><strong>React.js</strong> (functional components, hooks)</li>
+  <li><strong>React Three Fiber</strong> (3D object integration)</li>
+  <li><strong>lucide-react</strong> (icon set)</li>
+  <li><strong>Axios</strong> (API client)</li>
+</ul>
+
+<h3>Backend</h3>
+<ul>
+  <li><strong>Node.js</strong>, <strong>Express.js</strong></li>
+  <li><strong>MongoDB</strong> (Mongoose) – primary datastore</li>
+  <li><strong>bcrypt</strong> – password hashing</li>
+  <li><strong>JWT</strong> – stateless auth tokens</li>
+  <li><strong>cookie-parser</strong> – HTTP-only cookie handling for JWT</li>
+  <li><strong>CORS</strong> – controlled cross-origin access</li>
+  <li><strong>Cloudinary</strong> – media storage for images/banners</li>
+</ul>
+
+<h3>AI Integration</h3>
+<ul>
+  <li><strong>Google Gemini API</strong> – AI prompt/assistant features
+    <ul>
+      <li>Prompt → AI completion (code suggestions, explanations, bug hints)</li>
+      <li>Secure server-to-server calls with API key from environment</li>
+    </ul>
+  </li>
+</ul>
+
+<hr/>
+
+<h2>🔐 Security</h2>
+<ul>
+  <li><strong>Password Security:</strong> Stored using <code>bcrypt</code> hashing (never plaintext).</li>
+  <li><strong>Authentication:</strong> <code>JWT</code> issued on login; stored in <strong>HTTP-only</strong> cookies via <code>cookie-parser</code>.</li>
+  <li><strong>CORS:</strong> Restricted allowed origins, headers, and methods.</li>
+  <li><strong>Sensitive Keys:</strong> All secrets (Gemini, Cloudinary, JWT) loaded from <code>.env</code>; never committed to VCS.</li>
+</ul>
+
+<hr/>
+
+<h2>📦 Project Modules (Details)</h2>
+
+<h3>1) AI Prompt (Gemini)</h3>
+<ul>
+  <li>Free-form prompt input with context-aware suggestions.</li>
+  <li>Modes: explain code, generate snippets, optimize, debug hints.</li>
+  <li>Request/response history with copy-to-clipboard.</li>
+</ul>
+
+<h3>2) AI Hub</h3>
+<ul>
+  <li>Directory of AI tools (title, category, description, link).</li>
+  <li>Search & filter; tags for quick discovery.</li>
+  <li>Admin-side CRUD for tool catalog.</li>
+</ul>
+
+<h3>3) CodeSnippet</h3>
+<ul>
+  <li>Create, read, update, delete snippets.</li>
+  <li>Fields: title, language, tags, code body, notes.</li>
+  <li>Search by title/tags; syntax-friendly editor (client-side).</li>
+</ul>
+
+<h3>4) Task Manager</h3>
+<ul>
+  <li>CRUD tasks with priority (<em>low/medium/high</em>), due date, tags.</li>
+  <li>Filter & sort; mark complete/incomplete.</li>
+  <li>Responsive and keyboard accessible.</li>
+</ul>
+
+<h3>5) Social Media (NexGram)</h3>
+<ul>
+  <li>Post image/text; like and comment.</li>
+  <li>Uploads handled via <strong>Cloudinary</strong>.</li>
+</ul>
+
+
+<hr/>
+
+<h2>⚙️ Environment Variables</h2>
+
+<p>Create a <code>.env</code> file in <strong>server/</strong> with:</p>
+<pre>
+# Server
+PORT=5000
+MONGODB_URI=mongodb+srv://&lt;user&gt;:&lt;pass&gt;@&lt;cluster&gt;/nexcode
+JWT_SECRET=&lt;your-strong-secret&gt;
+
+# Cookie
+COOKIE_NAME=nc_token
+COOKIE_SECURE=false        # true in production (HTTPS)
+
+# CORS
+CLIENT_ORIGIN=http://localhost:5173
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=&lt;cloud_name&gt;
+CLOUDINARY_API_KEY=&lt;api_key&gt;
+CLOUDINARY_API_SECRET=&lt;api_secret&gt;
+
+# Google Gemini
+GEMINI_API_KEY=&lt;your_gemini_api_key&gt;
+</pre>
+
+<p>Create a <code>.env</code> in <strong>client/</strong> if needed (e.g., Vite):</p>
+<pre>
+VITE_API_BASE=http://localhost:5000
+</pre>
+
+<hr/>
+
+<h2>🧪 API Overview (Sample)</h2>
+
+<h3>Auth</h3>
+<table>
+  <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/api/auth/register</td><td>Create account (bcrypt hashed password)</td></tr>
+  <tr><td>POST</td><td>/api/auth/login</td><td>Login, set HTTP-only JWT cookie</td></tr>
+  <tr><td>POST</td><td>/api/auth/logout</td><td>Clear auth cookie</td></tr>
+  <tr><td>GET</td><td>/api/auth/me</td><td>Get current user (JWT required)</td></tr>
+</table>
+
+<h3>AI Prompt (Gemini)</h3>
+<table>
+  <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+  <tr><td>POST</td><td>/api/ai/prompt</td><td>Send prompt → returns AI response</td></tr>
+</table>
+
+<h3>AI Hub (Admin)</h3>
+<table>
+  <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+  <tr><td>GET</td><td>/api/tools</td><td>List tools</td></tr>
+  <tr><td>POST</td><td>/api/tools</td><td>Create tool (Admin)</td></tr>
+  <tr><td>PUT</td><td>/api/tools/:id</td><td>Update tool (Admin)</td></tr>
+  <tr><td>DELETE</td><td>/api/tools/:id</td><td>Delete tool (Admin)</td></tr>
+</table>
+
+<h3>Snippets / Tasks / Social</h3>
+<p>Standard CRUD endpoints: <code>/api/snippets</code>, <code>/api/tasks</code>, <code>/api/posts</code> with JWT-protected routes.</p>
+
+<hr/>
+
+<h2>📥 Installation & Running</h2>
+
+<h3>Prerequisites</h3>
+<ul>
+  <li>Node.js (LTS), npm or pnpm</li>
+  <li>MongoDB (Atlas or local)</li>
+  <li>Cloudinary account</li>
+  <li>Gemini API Key</li>
+</ul>
+
+<h3>Clone</h3>
+<pre>
+git clone https://github.com/&lt;your-username&gt;/NexCode.git
+cd NexCode
+</pre>
+
+<h3>Install</h3>
+<pre>
+# Client
+cd client
+npm install
+
+# Server
+cd ../server
+npm install
+</pre>
+
+<h3>Run (Dev)</h3>
+<pre>
+# Server (port 5000)
+cd server
+npm run dev
+
+# Client (e.g., Vite on 5173)
+cd ../client
+npm run dev
+</pre>
+
+<hr/>
+
+<h2>🔄 CORS & Axios</h2>
+<ul>
+  <li><strong>Server:</strong> CORS configured to allow <code>CLIENT_ORIGIN</code>, send credentials.</li>
+  <li><strong>Client:</strong> Axios instance with <code>baseURL</code> = <code>VITE_API_BASE</code> and <code>withCredentials: true</code> for cookie-based JWT.</li>
+</ul>
+
+<hr/>
+
+<h2>🧱 3D Object (React Three Fiber)</h2>
+<ul>
+  <li>Lightweight 3D model on auth/landing for brand personality.</li>
+  <li>Optimized for performance (suspense, lazy load, low poly when needed).</li>
+</ul>
+
+<hr/>
+
+<h2>📌 Notes</h2>
+<ul>
+  <li>Never commit <code>.env</code> files or secrets (Gemini, Cloudinary, JWT).</li>
+  <li>Use HTTPS and <code>COOKIE_SECURE=true</code> in production.</li>
+  <li>Rotate keys periodically and enforce strong password policies.</li>
+</ul>
+
+<hr/>
+
+<h2>🗺️ Roadmap</h2>
+<ul>
+  <li>Role-based admin dashboard enhancements</li>
+  <li>Rate-limiting & input validation (celebrate/zod)</li>
+  <li>Snippet versioning & sharing</li>
+  <li>Notifications (in-app + email)</li>
+</ul>
+
+<hr/>
+
+<h2>🤝 Contributing</h2>
+<p>PRs and suggestions are welcome! Please open an issue to discuss major changes.</p>
+
+<h2>📄 License</h2>
+<p>MIT</p>
+
 
 <p>Landing Page</p>
 
