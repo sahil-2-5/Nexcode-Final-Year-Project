@@ -42,7 +42,6 @@
   <li><strong>React.js</strong> (functional components, hooks)</li>
   <li><strong>React Three Fiber</strong> (3D object integration)</li>
   <li><strong>lucide-react</strong> (icon set)</li>
-  <li><strong>Axios</strong> (API client)</li>
 </ul>
 
 <h3>Backend</h3>
