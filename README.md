@@ -31,7 +31,6 @@
 <h3>🛠 Admin Module</h3>
 <ul>
   <li>Add / edit / delete AI tool listings for the <strong>AI Hub</strong> (name, category, description, official link, tags, logo/banner via Cloudinary).</li>
-  <li>Basic moderation for reported posts (optional).</li>
 </ul>
 
 <hr/>
